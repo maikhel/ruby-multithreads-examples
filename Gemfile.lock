@@ -1,0 +1,15 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    celluloid (0.18.0)
+      timers (~> 4)
+    timers (4.3.5)
+
+PLATFORMS
+  arm64-darwin-21
+
+DEPENDENCIES
+  celluloid
+
+BUNDLED WITH
+   2.3.22
