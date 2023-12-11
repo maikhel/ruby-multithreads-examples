@@ -10,7 +10,7 @@ service_klasses = [
   AsyncCelluloidService,
   AsyncConcurrentService,
   AsyncThreadsService,
-  SyncService
+  # SyncService
 ]
 
 service_klasses.each do |service_klass|
