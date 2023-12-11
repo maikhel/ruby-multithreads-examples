@@ -3,6 +3,7 @@ GEM
   specs:
     celluloid (0.18.0)
       timers (~> 4)
+    concurrent-ruby (1.2.2)
     timers (4.3.5)
 
 PLATFORMS
@@ -10,6 +11,7 @@ PLATFORMS
 
 DEPENDENCIES
   celluloid
+  concurrent-ruby
 
 BUNDLED WITH
    2.3.22

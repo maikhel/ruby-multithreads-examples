@@ -1,16 +1,17 @@
 require 'benchmark'
-require_relative './async_threads_service'
 require_relative './sync_service'
+require_relative './async_threads_service'
 require_relative './async_celluloid_service'
+require_relative './async_concurrent_service'
 
 requests_count = 15
 
 service_klasses = [
   AsyncCelluloidService,
+  AsyncConcurrentService,
   AsyncThreadsService,
   SyncService
 ]
-
 
 service_klasses.each do |service_klass|
   puts "--- #{service_klass} ---"
