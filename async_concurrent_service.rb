@@ -10,7 +10,7 @@ class AsyncConcurrentService
 
   def initialize(requests_count)
     @requests_count = requests_count
-    @jokes = Queue.new
+    @jokes = Concurrent::Array.new
   end
 
   def call
