@@ -1,6 +1,5 @@
 require 'net/http'
 require 'json'
-require 'thread'
 
 class AsyncThreadsService
   API_ENDPOINT = 'https://api.chucknorris.io/jokes/random'.freeze
