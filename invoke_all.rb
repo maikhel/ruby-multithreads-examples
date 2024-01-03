@@ -16,9 +16,8 @@ service_klasses = [
 service_klasses.each do |service_klass|
   puts "--- #{service_klass} ---"
   time = Benchmark.measure do
-    service = service_klass.new(requests_count)
-    service.call
-    puts "Fetched #{service.jokes.size} jokes"
+    jokes = service_klass.call(requests_count)
+    puts "Fetched #{jokes.size} jokes"
   end
 
   puts "Time elapsed: #{time.real.round(2)} seconds"

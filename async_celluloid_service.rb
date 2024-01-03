@@ -7,24 +7,18 @@ Celluloid.boot
 class AsyncCelluloidService
   API_ENDPOINT = 'https://api.chucknorris.io/jokes/random'.freeze
 
-  attr_reader :jokes
-
-  def initialize(requests_count)
-    @requests_count = requests_count
-    @jokes = Queue.new
-  end
-
-  def call
+  def self.call(requests_count)
+    jokes = Queue.new
     requesters = []
 
-    @requests_count.times do
+    requests_count.times do
       requester = DataRequester.new(API_ENDPOINT)
       future = requester.future.call
 
       requesters << future
     end
 
-    @jokes = requesters.map(&:value)
+    jokes = requesters.map(&:value)
   end
 end
 

@@ -5,24 +5,18 @@ require 'concurrent'
 class AsyncConcurrentService
   API_ENDPOINT = 'https://api.chucknorris.io/jokes/random'.freeze
 
-  attr_reader :jokes
-
-  def initialize(requests_count)
-    @requests_count = requests_count
-    @jokes = Concurrent::Array.new
-  end
-
-  def call
+  def self.call(requests_count)
+    jokes = Concurrent::Array.new
     futures = []
 
-    @requests_count.times do
+    requests_count.times do
       requester = DataRequester.new(API_ENDPOINT)
       future = Concurrent::Future.execute { requester.call }
 
       futures << future
     end
 
-    @jokes = futures.map(&:value)
+    jokes = futures.map(&:value)
   end
 end
 

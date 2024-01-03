@@ -4,20 +4,14 @@ require 'json'
 class AsyncThreadsService
   API_ENDPOINT = 'https://api.chucknorris.io/jokes/random'.freeze
 
-  attr_reader :jokes
-
-  def initialize(requests_count)
-    @requests_count = requests_count
-    @jokes = Queue.new
-  end
-
-  def call
+  def self.call(requests_count)
+    jokes = Queue.new
     threads = []
 
-    @requests_count.times do
+    requests_count.times do
       thread = Thread.new do
         requester = DataRequester.new(API_ENDPOINT)
-        @jokes << requester.call
+        jokes << requester.call
       end
 
       threads << thread
@@ -25,7 +19,7 @@ class AsyncThreadsService
 
     threads.each(&:join)
 
-    @jokes
+    jokes
   end
 end
 
