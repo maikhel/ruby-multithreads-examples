@@ -8,6 +8,4 @@ Run `bundle install` to install required gems.
 
 Run `ruby invoke_all.rb` to see benchmarks for services execution.
 
-
-
-
+Run `ruby invoke_one.rb` to invoke just one service.
