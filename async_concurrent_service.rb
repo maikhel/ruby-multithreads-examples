@@ -11,7 +11,7 @@ class AsyncConcurrentService
 
     requests_count.times do
       requester = DataRequester.new(API_ENDPOINT)
-      future = Concurrent::Future.execute { requester.call }
+      future = Concurrent::Promises.future { requester.call }
 
       futures << future
     end
